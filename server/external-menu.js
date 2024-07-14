@@ -30,5 +30,18 @@ router.get("/task/:rKey/menu", function (req, res) {
   };
   res.json(result);
 });
+router.get("/weather/:rKey/menu", function (req, res) {
+  const result = {
+    nodes: [
+      {
+        title: "Weather",
+        nodes: [
+          { title: "وضعیت آب و هوا", pid: "weather" },
+        ],
+      },
+    ],
+  };
+  res.json(result);
+});
 
 module.exports = router;

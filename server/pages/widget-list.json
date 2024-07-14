@@ -267,6 +267,31 @@
                 ]
             }
         ]
+    },
+    "weather": {
+        "container": "page",
+        "groups": [
+            {
+                "groupName": "group1",
+                "options": {
+                    "repositories": {
+                        "bc.grid": "/assets/js/basiscore.grid.component.js"
+                    },
+                    "settings": {}
+                },
+                "widgets": [
+                    {
+                        "id": "weather.html",
+                        "title": "وضعیت آب و هوا",
+                        "name": "weather",
+                        "container": "widget",
+                        "x": 0,
+                        "y": 0,
+                        "w": 10,
+                        "h": 10
+                    }
+                ]
+            }
+        ]
     }
-   
 }

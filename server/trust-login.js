@@ -74,6 +74,12 @@ router.get("/:rKey/menu", function (req, res) {
         multi: false,
         url: "http://localhost:8080/server/external/task",
       },
+      {
+        mid: 5,
+        title: "Weather",
+        multi: false,
+        url: "http://localhost:8080/server/external/weather",
+      }
     ],
   };
   res.json(result);
@@ -128,12 +134,24 @@ router.get("/:rKey/page/:pageId", function (req, res) {
 });
 
 router.get("/:rKey/widget/:widgetId", function (req, res) {
-  const widgetList = fs.readFileSync(
-    path.join(__dirname, "pages", req.params.widgetId),
-    {
-      encoding: "utf8",
-    }
-  );
+  let widgetList
+
+  if (req.params.widgetId.includes("external")){
+    widgetList = fs.readFileSync(
+        path.join(__dirname, "external", req.params.widgetId),
+        {
+          encoding: "utf8",
+        }
+    );
+  }else{
+    widgetList = fs.readFileSync(
+        path.join(__dirname, "pages", req.params.widgetId),
+        {
+          encoding: "utf8",
+        }
+    );
+  }
+
   res.send(widgetList);
 });
 

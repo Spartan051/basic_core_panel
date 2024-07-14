@@ -12,6 +12,56 @@ router.get("/calender/:rKey/page/:pageId", function (req, res) {
   );
   res.json(Reflect.get(JSON.parse(widgetList), req.params.pageId));
 });
+router.get("/calender/:rKey/widget/:widgetId", function (req, res) {
+  let widgetList
+
+  if (req.params.widgetId.includes("external")){
+    widgetList = fs.readFileSync(
+        path.join(__dirname, "external", req.params.widgetId),
+        {
+          encoding: "utf8",
+        }
+    );
+  }else{
+    widgetList = fs.readFileSync(
+        path.join(__dirname, "pages", req.params.widgetId),
+        {
+          encoding: "utf8",
+        }
+    );
+  }
+  res.send(widgetList);
+});
+
+router.get("/weather/:rKey/page/:pageId", function (req, res) {
+  const widgetList = fs.readFileSync(
+      path.join(__dirname, "pages/widget-list.json"),
+      {
+        encoding: "utf8",
+      }
+  );
+  res.json(Reflect.get(JSON.parse(widgetList), req.params.pageId));
+});
+router.get("/weather/:rKey/widget/:widgetId", function (req, res) {
+  let widgetList
+
+  if (req.params.widgetId.includes("external")){
+    widgetList = fs.readFileSync(
+        path.join(__dirname, "external", req.params.widgetId),
+        {
+          encoding: "utf8",
+        }
+    );
+  }else{
+    widgetList = fs.readFileSync(
+        path.join(__dirname, "pages", req.params.widgetId),
+        {
+          encoding: "utf8",
+        }
+    );
+  }
+  res.send(widgetList);
+});
 router.get("/task/:rKey/page/:pageId", function (req, res) {
   const widgetList = fs.readFileSync(
     path.join(__dirname, "pages/widget-list.json"),
@@ -21,22 +71,24 @@ router.get("/task/:rKey/page/:pageId", function (req, res) {
   );
   res.json(Reflect.get(JSON.parse(widgetList), req.params.pageId));
 });
-router.get("/calender/:rKey/widget/:widgetId", function (req, res) {
-  const widgetList = fs.readFileSync(
-    path.join(__dirname, "pages", req.params.widgetId),
-    {
-      encoding: "utf8",
-    }
-  );
-  res.send(widgetList);
-});
 router.get("/task/:rKey/widget/:widgetId", function (req, res) {
-  const widgetList = fs.readFileSync(
-    path.join(__dirname, "pages", req.params.widgetId),
-    {
-      encoding: "utf8",
-    }
-  );
+  let widgetList
+
+  if (req.params.widgetId.includes("external")){
+    widgetList = fs.readFileSync(
+        path.join(__dirname, "external", req.params.widgetId),
+        {
+          encoding: "utf8",
+        }
+    );
+  }else{
+    widgetList = fs.readFileSync(
+        path.join(__dirname, "pages", req.params.widgetId),
+        {
+          encoding: "utf8",
+        }
+    );
+  }
   res.send(widgetList);
 });
 router.get("/task/:rKey/errorMessages", function (req, res) {
