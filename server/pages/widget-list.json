@@ -35,9 +35,6 @@
                         "h": 2,
                         "url": "server/external"
                     },
-
-
-
                     {
                         "id": "userWidget1.html",
                         "title": "ویجت داشبورد",
@@ -82,12 +79,6 @@
                         "w": 10,
                         "h": 2
                     }
-
-
-
-
-
-                    
                 ]
             }
         ]
@@ -269,29 +260,31 @@
         ]
     },
     "weather": {
-        "container": "page",
-        "groups": [
-            {
-                "groupName": "group1",
-                "options": {
-                    "repositories": {
-                        "bc.grid": "/assets/js/basiscore.grid.component.js"
+            "container": "dashboard",
+            "queryString": "?mid=20",
+            "groups": [
+                {
+                    "groupName": "group1",
+                    "options": {
+                        "repositories": {
+                            "bc.grid": "/assets/js/basiscore.grid.component.js"
+                        },
+                        "settings": {}
                     },
-                    "settings": {}
-                },
-                "widgets": [
-                    {
-                        "id": "weather.html",
-                        "title": "وضعیت آب و هوا",
-                        "name": "weather",
-                        "container": "widget",
-                        "x": 0,
-                        "y": 0,
-                        "w": 10,
-                        "h": 10
-                    }
-                ]
-            }
-        ]
-    }
+                    "widgets": [
+                        {
+                            "id": "external-weather.html",
+                            "title": "ویجت وضعیت آب و هوا",
+                            "name": "weather",
+                            "container": "widget",
+                            "addToDashboard": false,
+                            "x": 0,
+                            "y": 0,
+                            "w": 12,
+                            "h": 4
+                        }
+                    ]
+                }
+            ]
+        }
 }

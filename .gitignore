@@ -4,3 +4,4 @@ dist
 *.zip
 types
 zah_*
+.vscode
